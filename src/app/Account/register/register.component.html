@@ -1,0 +1,61 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.xyz/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"      />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="bg-light ">
+    <div class="container ">
+        <div class="row justify-content-center ">
+            <div class="col-md-4 ">
+                <div class="card mt-5 shadow-lg bg-white rounded ">
+                    <div class="card-header text-bg-primary">
+                        <label>Register</label>
+                        <a style="float: right; text-decoration: underline; font-size: 18px; color: white;" routerLink="">login</a>
+                    </div>
+                    <div class="card-body ">
+                        <form >
+                            <!-- User Name -->
+                            <div class="form-floating mb-3">
+                                <input type="text" id="userName" class="form-control" placeholder="" autofocus="" formControlName="userName">
+                                <label for="userName">User Name</label>
+                            </div>
+                             <!-- Email -->
+                             <div class="form-floating mb-3">
+                                <input type="email" id="email" class="form-control" placeholder="" autofocus="" formControlName="email">
+                                <label for="Email">Email</label>
+                            </div>
+                            <!-- Password -->
+                            <div class="form-floating mb-3">
+                                <input type="password" id="PasswordHash" class="form-control" placeholder="" autofocus="" formControlName="PasswordHash">
+                                <label for="password">Password</label>
+                            </div>
+                            <!-- Password -->
+                            <div class="form-floating mb-3">
+                                <input type="password" id="confirmPassword" class="form-control" placeholder="" autofocus="" formControlName="confirmPassword">
+                                <label for="confirmPassword">Confirm Password</label>
+                            </div>
+                            <!-- Login Button -->
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-success" routerLink=""> <i class="fa fa-sign-in" aria-hidden="true"></i> Register</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../bootstrab/js/bootstrap.bundle.js"></script>
+
+
+</body>

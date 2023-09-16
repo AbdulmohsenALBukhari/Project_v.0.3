@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.xyz/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"      />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="bg-light ">
+    <div class="container ">
+        <div class="row justify-content-center ">
+            <div class="col-md-4 ">
+                <div class="card mt-5 shadow-lg bg-white rounded ">
+                    <div class="card-header text-bg-primary">
+                        <label>login</label>
+                        <a style="float: right; text-decoration: underline; font-size: 18px; color: white;" routerLink="register">sign up</a>
+                    </div>
+                    <div class="card-body ">
+                        <form >
+                            <!-- User Name -->
+                            <div class="form-floating mb-3">
+                                <input type="text" id="userName" class="form-control" placeholder="" autofocus="">
+                                <label for="userName">Username</label>
+                            </div>
+                            <!-- Password -->
+                            <div class="form-floating mb-3">
+                                <input type="password" id="password" class="form-control" placeholder="" autofocus="">
+                                <label for="password">Password</label>
+                            </div>
+                            <!-- Remeber me -->
+                            <div class="form-check mb-3">
+                                <input type="checkbox" class="form-check-input" id="remeberMe">
+                                <label for="remeberMe">Remeber me</label>
+                                <a style="float: right; text-decoration: underline; font-size: 15px; color: blue;" routerLink="forgotPassword">forgot password</a>
+                            </div>
+                            <!-- Login Button -->
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-success"> <i class="fa fa-sign-in" aria-hidden="true"></i> Login as admin</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../bootstrab/js/bootstrap.bundle.js"></script>
+
+
+</body>
+
+</html>
