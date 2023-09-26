@@ -22,30 +22,34 @@
                         <a style="float: right; text-decoration: underline; font-size: 18px; color: white;" routerLink="">login</a>
                     </div>
                     <div class="card-body ">
-                        <form >
+                        <form [formGroup]="formData" (ngSubmit)="onSubmit()">
                             <!-- User Name -->
-                            <div class="form-floating mb-3">
-                                <input type="text" id="userName" class="form-control" placeholder="" autofocus="" formControlName="userName">
+                            <div class="form-floating mb-3" >
+                                <input type="text" id="userName" class="form-control" placeholder=""  formControlName="userName">
                                 <label for="userName">User Name</label>
+                                <div class="text-bg-danger" *ngIf="!this.formData.get('userName')?.valid && this.formData.get('userName')?.touched">مطلوب</div>
                             </div>
                              <!-- Email -->
                              <div class="form-floating mb-3">
-                                <input type="email" id="email" class="form-control" placeholder="" autofocus="" formControlName="email">
+                                <input type="email" id="email" class="form-control" placeholder=""  formControlName="email" [ngClass]="{
+                                    'is-invalid':
+                                    !this.formData.get('email')?.valid && this.formData.get('email')?.touched 
+                                }">
                                 <label for="Email">Email</label>
                             </div>
                             <!-- Password -->
                             <div class="form-floating mb-3">
-                                <input type="password" id="PasswordHash" class="form-control" placeholder="" autofocus="" formControlName="PasswordHash">
+                                <input type="password" id="PasswordHash" class="form-control" placeholder=""  formControlName="PasswordHash">
                                 <label for="password">Password</label>
                             </div>
                             <!-- Password -->
                             <div class="form-floating mb-3">
-                                <input type="password" id="confirmPassword" class="form-control" placeholder="" autofocus="" formControlName="confirmPassword">
+                                <input type="password" id="confirmPassword" class="form-control" placeholder=""  >
                                 <label for="confirmPassword">Confirm Password</label>
                             </div>
                             <!-- Login Button -->
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-success" routerLink=""> <i class="fa fa-sign-in" aria-hidden="true"></i> Register</button>
+                                <button type="submit" class="btn btn-success" [disabled]="!formData.valid"> <i class="fa fa-sign-in" aria-hidden="true"></i> Register</button>
                             </div>
                         </form>
                     </div>
