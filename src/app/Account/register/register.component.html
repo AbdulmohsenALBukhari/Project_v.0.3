@@ -25,15 +25,15 @@
                         <form [formGroup]="formData" (ngSubmit)="onSubmit()">
                             <!-- User Name -->
                             <div class="form-floating mb-3" >
-                                <input type="text" id="userName" class="form-control" placeholder=""  formControlName="userName">
-                                <label for="userName">User Name</label>
-                                <div class="text-bg-danger" *ngIf="!this.formData.get('userName')?.valid && this.formData.get('userName')?.touched">مطلوب</div>
+                                <input type="text" id="UserName" class="form-control" placeholder=""  formControlName="UserName">
+                                <label for="UserName">User Name</label>
+                                <div class="text-bg-danger" *ngIf="!this.formData.get('UserName')?.valid && this.formData.get('UserName')?.touched">مطلوب</div>
                             </div>
                              <!-- Email -->
                              <div class="form-floating mb-3">
-                                <input type="email" id="email" class="form-control" placeholder=""  formControlName="email" [ngClass]="{
+                                <input type="Email" id="Email" class="form-control" placeholder=""  formControlName="Email" [ngClass]="{
                                     'is-invalid':
-                                    !this.formData.get('email')?.valid && this.formData.get('email')?.touched 
+                                    !this.formData.get('Email')?.valid && this.formData.get('Email')?.touched 
                                 }">
                                 <label for="Email">Email</label>
                             </div>

@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { FormGroup,FormBuilder, Validators } from '@angular/forms';
 import { RegisterModel } from 'src/app/model/RegisterModel';
-import { AccountServicesService } from 'src/app/services/account-services.service';
+import { AccountServicesService } from 'src/app/services/AccountServices.service';
 
 @Component({
   selector: 'app-register',
@@ -11,8 +11,6 @@ import { AccountServicesService } from 'src/app/services/account-services.servic
 export class RegisterComponent implements OnInit {
 
   formData! : FormGroup;
-  loading = false;
-  submitted = false;
   reg : RegisterModel;
 
   constructor(
@@ -48,7 +46,7 @@ export class RegisterComponent implements OnInit {
     if(this.formData.valid)
       this.validateRegisterModel();
       this.service.Register(this.reg).subscribe(succes =>{
-        alert('god')
+        console.log('succes')
       },error => console.log(error)); 
   }
 

@@ -11,11 +11,11 @@ export class AccountServicesService {
 
   constructor(private http: HttpClient) { }
 
-  baseUrl = '';
+  baseUrl = 'http://localhost:5013/api/Account/';
 
   headers = new HttpHeaders().set('content-type','application/json');
 
   Register(reg : RegisterModel):Observable<RegisterModel>{
-    return this.http.post<RegisterModel>(this.baseUrl + '',reg,{'headers':this.headers}).pipe();
+    return this.http.post<RegisterModel>(this.baseUrl + 'Register',reg,{'headers':this.headers}).pipe();
   }
 }
