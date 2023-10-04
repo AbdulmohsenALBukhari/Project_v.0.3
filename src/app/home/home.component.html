@@ -24,21 +24,21 @@
                         <a style="float: right; text-decoration: underline; font-size: 18px; color: white;" routerLink="register">sign up</a>
                     </div>
                     <div class="card-body ">
-                        <form >
+                        <form [formGroup]="formData" (ngSubmit)="onSubmit()">
                             <!-- User Name -->
                             <div class="form-floating mb-3">
-                                <input type="text" id="userName" class="form-control" placeholder="" autofocus="">
-                                <label for="userName">Username</label>
+                                <input type="text" id="UserName" class="form-control" placeholder="" autofocus="" formControlName="UserName">
+                                <label for="UserName">Username</label>
                             </div>
                             <!-- Password -->
                             <div class="form-floating mb-3">
-                                <input type="password" id="password" class="form-control" placeholder="" autofocus="">
+                                <input type="password" id="password" class="form-control" placeholder="" autofocus="" formControlName="PasswordHash">
                                 <label for="password">Password</label>
                             </div>
                             <!-- Remeber me -->
                             <div class="form-check mb-3">
-                                <input type="checkbox" class="form-check-input" id="remeberMe">
-                                <label for="remeberMe">Remeber me</label>
+                                <input type="checkbox" class="form-check-input" id="RememberMe" formControlName="RememberMe">
+                                <label for="RememberMe">Remeber me</label>
                                 <a style="float: right; text-decoration: underline; font-size: 15px; color: blue;" routerLink="forgotPassword">forgot password</a>
                             </div>
                             <!-- Login Button -->

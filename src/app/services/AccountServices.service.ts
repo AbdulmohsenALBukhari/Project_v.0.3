@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { RegisterModel } from '../model/RegisterModel';
+import { LoginModel, RegisterModel } from '../model/AccountModels';
 import { Observable } from 'rxjs';
 
 
@@ -17,5 +17,9 @@ export class AccountServicesService {
 
   Register(reg : RegisterModel):Observable<RegisterModel>{
     return this.http.post<RegisterModel>(this.baseUrl + 'Register',reg,{'headers':this.headers}).pipe();
+  }
+
+  Login(log : LoginModel):Observable<LoginModel>{
+    return this.http.post<LoginModel>(this.baseUrl + 'Login', log ,{'headers':this.headers}).pipe();
   }
 }

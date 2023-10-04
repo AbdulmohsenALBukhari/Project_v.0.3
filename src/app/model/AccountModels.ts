@@ -6,3 +6,8 @@ export class RegisterModel{
 
     constructor(){}
 }
+export class LoginModel{
+    UserName:string;
+    PasswordHash:string;
+    RememberMe:boolean = false;
+}
