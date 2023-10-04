@@ -27,7 +27,7 @@
                             <div class="form-floating mb-3" >
                                 <input type="text" id="UserName" class="form-control" placeholder=""  formControlName="UserName">
                                 <label for="UserName">User Name</label>
-                                <div class="text-bg-danger" *ngIf="!this.formData.get('UserName')?.valid && this.formData.get('UserName')?.touched">مطلوب</div>
+                                <div class="text-danger" *ngIf="!this.formData.get('UserName')?.valid && this.formData.get('UserName')?.touched"> {{messageVlidate.userName.require}}</div>
                             </div>
                              <!-- Email -->
                              <div class="form-floating mb-3">

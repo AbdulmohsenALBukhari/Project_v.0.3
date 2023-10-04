@@ -13,6 +13,19 @@ export class RegisterComponent implements OnInit {
   formData! : FormGroup;
   reg : RegisterModel;
 
+  messageVlidate = {
+    userName : {
+      require : 'require'
+    },
+    Email : {
+      require : ''
+    },
+    PasswordHash : {
+      require : '',
+      minLength : 6,
+    }
+  }
+
   constructor(
      private formBuilder : FormBuilder,
      private service : AccountServicesService
@@ -46,7 +59,10 @@ export class RegisterComponent implements OnInit {
     if(this.formData.valid)
       this.validateRegisterModel();
       this.service.Register(this.reg).subscribe(succes =>{
+       setTimeout(() => {
         console.log('succes')
+        this.formData.reset();
+       }, 3500);
       },error => console.log(error)); 
   }
 
