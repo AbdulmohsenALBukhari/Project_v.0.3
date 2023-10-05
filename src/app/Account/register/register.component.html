@@ -25,39 +25,50 @@
                         <form [formGroup]="formData" (ngSubmit)="onSubmit()">
                             <!-- User Name -->
                             <div class="form-floating mb-3" >
-                                <input type="text" id="UserName" class="form-control" placeholder=""  formControlName="UserName" [ngClass]="{
-                                    'is-invalid':
+                                <input type="text" id="UserName" class="form-control" placeholder=""  formControlName="UserName" 
+                                [ngClass]="{'is-invalid':
                                     !this.formData.get('UserName')?.valid && this.formData.get('UserName')?.touched 
                                 }">
                                 <label for="UserName">User Name</label>
-                                <div class="text-danger" *ngIf="!this.formData.get('UserName')?.valid && this.formData.get('UserName')?.touched"> {{messageVlidate.userName.require}}</div>
+                                <div class="text-danger" 
+                                *ngIf="!this.formData.get('UserName')?.valid && this.formData.get('UserName')?.touched">
+                                 {{messageVlidate.userName.require}}
+                                </div>
                             </div>
                              <!-- Email -->
                              <div class="form-floating mb-3">
-                                <input type="Email" id="Email" class="form-control" placeholder=""  formControlName="Email" [ngClass]="{
-                                    'is-invalid':
+                                <input type="Email" id="Email" class="form-control" placeholder=""  formControlName="Email" 
+                                [ngClass]="{'is-invalid':
                                     !this.formData.get('Email')?.valid && this.formData.get('Email')?.touched 
                                 }">
                                 <label for="Email">Email</label>
-                                <div class="text-danger" *ngIf="!this.formData.get('Email')?.valid && this.formData.get('Email')?.touched"> {{messageVlidate.Email.require}}</div>
+                                <div class="text-danger"
+                                 *ngIf="!this.formData.get('Email')?.valid && this.formData.get('Email')?.touched">
+                                  {{messageVlidate.Email.require}}
+                                </div>
                             </div>
                             <!-- Password -->
                             <div class="form-floating mb-3">
-                                <input type="password" id="PasswordHash" class="form-control" placeholder=""  formControlName="PasswordHash" [ngClass]="{
-                                    'is-invalid':
+                                <input type="password" id="PasswordHash" class="form-control" placeholder=""  formControlName="PasswordHash" 
+                                [ngClass]="{'is-invalid':
                                     !this.formData.get('PasswordHash')?.valid && this.formData.get('PasswordHash')?.touched 
                                 }">
                                 <label for="password">Password</label>
-                                <div class="text-danger" *ngIf="!this.formData.get('PasswordHash')?.valid && this.formData.get('PasswordHash')?.touched"> {{messageVlidate.PasswordHash.require}}</div>
+                                <div class="text-danger" 
+                                *ngIf="!this.formData.get('PasswordHash')?.valid && this.formData.get('PasswordHash')?.touched">
+                                 {{messageVlidate.PasswordHash.require}}
+                                </div>
                             </div>
                             <!-- confirm Password -->
                             <div class="form-floating mb-3">
-                                <input type="password" id="confirmPassword" class="form-control" placeholder=""  [ngClass]="{
-                                    'is-invalid':
+                                <input type="password" id="confirmPassword" class="form-control" placeholder=""  formControlName="confirmPassword" 
+                                [ngClass]="{'is-invalid':
                                     !this.formData.get('confirmPassword')?.valid && this.formData.get('confirmPassword')?.touched 
                                 }">
                                 <label for="confirmPassword">Confirm Password</label>
-                                <div class="text-danger" *ngIf="!this.formData.get('confirmPassword')?.valid && this.formData.get('confirmPassword')?.touched"> {{messageVlidate.confirmPassword.require}}</div>
+                                <div class="text-danger" *ngIf="!this.formData.get('confirmPassword')?.valid && this.formData.get('confirmPassword')?.touched">
+                                     {{messageVlidate.confirmPassword.require}}
+                                    </div>
                             </div>
                             <!-- Login Button -->
                             <div class="d-grid">

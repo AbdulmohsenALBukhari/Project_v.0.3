@@ -15,18 +15,20 @@ export class RegisterComponent implements OnInit {
 
   messageVlidate = {
     userName : {
-      require : 'require'
+      require : 'require',
+      bibi : 'bitch'
     },
     Email : {
-      require : 'require'
+      require : 'require',
+      notValid : 'email is incorrect'
     },
     PasswordHash : {
       require : 'require',
-      minLength : 6,
+      minLength : '8',
     },
     confirmPassword : {
       require : 'require',
-      minLength : 6,
+      minLength : '8',
     }
   }
 
@@ -40,8 +42,9 @@ export class RegisterComponent implements OnInit {
     
     this.formData = this.formBuilder.group({
       UserName:['',Validators.required],
-      Email:['',Validators.required],
+      Email:['',Validators.required,Validators.email],
       PasswordHash:['',[Validators.required,Validators.minLength(8)]],
+      confirmPassword:['',[Validators.required,Validators.minLength(8)]],
     });
 
     this.reg = {
