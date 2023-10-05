@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit{
     this.formData = this.formBuilder.group({
       UserName:['',Validators.required],
       PasswordHash:['',Validators.required],
-      RememberMe:['',Validators.required]
+      RememberMe:[false,Validators.required]
     });
 
     this.log ={
@@ -45,14 +45,16 @@ export class HomeComponent implements OnInit{
 
     if (this.formData.valid) {
       this.validateRegisterModel();
-      this.service.Login(this.log).subscribe(succes =>{
-        console.log(succes)
-        this.router.navigate(['upload'])
+      this.service.Login(this.log).subscribe(succ =>{
+        console.log(succ);
+        this.router.navigate(['upload']);
       });
-    }else{
-      console.log()
     }
   }
 
 
+
+
+
+  
 }

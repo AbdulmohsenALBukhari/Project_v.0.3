@@ -18,10 +18,14 @@ export class RegisterComponent implements OnInit {
       require : 'require'
     },
     Email : {
-      require : ''
+      require : 'require'
     },
     PasswordHash : {
-      require : '',
+      require : 'require',
+      minLength : 6,
+    },
+    confirmPassword : {
+      require : 'require',
       minLength : 6,
     }
   }
