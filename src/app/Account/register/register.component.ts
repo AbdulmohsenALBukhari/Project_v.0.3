@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   messageVlidate = {
     userName : {
       require : 'require',
-      bibi : 'bitch'
+      minLength : 'minLength 3'
     },
     Email : {
       require : 'require',
@@ -41,8 +41,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     
     this.formData = this.formBuilder.group({
-      UserName:['',Validators.required],
-      Email:['',Validators.required,Validators.email],
+      UserName:['',Validators.required,Validators.minLength(3)],
+      Email:['',Validators.required],
       PasswordHash:['',[Validators.required,Validators.minLength(8)]],
       confirmPassword:['',[Validators.required,Validators.minLength(8)]],
     });
@@ -52,6 +52,16 @@ export class RegisterComponent implements OnInit {
       Email:'',
       PasswordHash:''
     }
+  }
+
+  minLengthUserName(){
+    if (this.formData.value.UserName == '') {
+      return true;
+    }
+    if (this.formData.value.UserName.length <= 3) {
+      return true;
+    }
+      return false;
   }
 
   validateRegisterModel(){

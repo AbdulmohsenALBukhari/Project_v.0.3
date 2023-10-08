@@ -32,7 +32,11 @@
                                 <label for="UserName">User Name</label>
                                 <div class="text-danger" 
                                 *ngIf="!this.formData.get('UserName')?.valid && this.formData.get('UserName')?.touched">
-                                 {{messageVlidate.userName.require}}
+                                    <div class="text-danger" 
+                                    *ngIf="this.formData.get('UserName')?.hasError('required')">
+                                    {{messageVlidate.userName.require}}
+                                    </div>
+                         
                                 </div>
                             </div>
                              <!-- Email -->

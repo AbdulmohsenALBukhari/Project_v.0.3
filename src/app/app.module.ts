@@ -9,7 +9,6 @@ import { ForgotPasswordComponent } from './Account/forgot-password/forgot-passwo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { UploadHomeComponent } from './Upload/upload-home/upload-home.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +16,6 @@ import { UploadHomeComponent } from './Upload/upload-home/upload-home.component'
     HomeComponent,
     RegisterComponent,
     ForgotPasswordComponent,
-    UploadHomeComponent
   ],
   imports: [
     BrowserModule,
