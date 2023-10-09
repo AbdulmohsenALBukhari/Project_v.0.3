@@ -12,6 +12,7 @@ export class RegisterComponent implements OnInit {
 
   formData! : FormGroup;
   reg : RegisterModel;
+  submitted = false;
 
   messageVlidate = {
     userName : {
@@ -41,7 +42,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     
     this.formData = this.formBuilder.group({
-      UserName:['',Validators.required,Validators.minLength(3)],
+      UserName:['',Validators.required],
       Email:['',Validators.required],
       PasswordHash:['',[Validators.required,Validators.minLength(8)]],
       confirmPassword:['',[Validators.required,Validators.minLength(8)]],
@@ -54,15 +55,6 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  minLengthUserName(){
-    if (this.formData.value.UserName == '') {
-      return true;
-    }
-    if (this.formData.value.UserName.length <= 3) {
-      return true;
-    }
-      return false;
-  }
 
   validateRegisterModel(){
     this.reg.UserName = this.formData.value.UserName!;
@@ -72,6 +64,8 @@ export class RegisterComponent implements OnInit {
   
   onSubmit(){
     console.log(this.formData);
+
+    this.submitted = true;
 
     if(this.formData.valid)
       this.validateRegisterModel();
