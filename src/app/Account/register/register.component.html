@@ -30,13 +30,20 @@
                                     !this.formData.get('UserName')?.valid && this.formData.get('UserName')?.touched 
                                 }">
                                 <label for="UserName">User Name</label>
-                                <div class="text-danger" 
-                                *ngIf="!this.formData.get('UserName')?.valid && this.formData.get('UserName')?.touched">
+                                <div *ngIf="!this.formData.get('UserName')?.valid && this.formData.get('UserName')?.touched">
+
                                     <div class="text-danger" 
                                     *ngIf="this.formData.get('UserName')?.hasError('required')">
-                                    {{messageVlidate.userName.require}}
+                                    {{messageVlidate.userName.required}}
                                     </div>
+
+                                    <div class="text-danger" 
+                                    *ngIf="!this.formData.get('UserName')?.hasError('minLength')">
+                                    {{messageVlidate.userName.minLength}}
+                                    </div>
+
                                 </div>
+
                             </div>
                              <!-- Email -->
                              <div class="form-floating mb-3">
@@ -45,9 +52,18 @@
                                     !this.formData.get('Email')?.valid && this.formData.get('Email')?.touched 
                                 }">
                                 <label for="Email">Email</label>
-                                <div class="text-danger"
-                                 *ngIf="!this.formData.get('Email')?.valid && this.formData.get('Email')?.touched">
-                                  {{messageVlidate.Email.require}}
+                                <div *ngIf="!this.formData.get('Email')?.valid && this.formData.get('Email')?.touched">
+
+                                    <div class="text-danger"
+                                    *ngIf="this.formData.get('Email')?.hasError('required')">
+                                    {{messageVlidate.Email.required}}
+                                    </div> 
+
+                                    <div class="text-danger"
+                                    *ngIf="this.formData.get('Email')?.hasError('email')">
+                                    {{messageVlidate.Email.notValid}}
+                                    </div> 
+
                                 </div>
                             </div>
                             <!-- Password -->
@@ -59,7 +75,7 @@
                                 <label for="password">Password</label>
                                 <div class="text-danger" 
                                 *ngIf="!this.formData.get('PasswordHash')?.valid && this.formData.get('PasswordHash')?.touched">
-                                 {{messageVlidate.PasswordHash.require}}
+                                 {{messageVlidate.PasswordHash.required}}
                                 </div>
                             </div>
                             <!-- confirm Password -->
@@ -70,7 +86,7 @@
                                 }">
                                 <label for="confirmPassword">Confirm Password</label>
                                 <div class="text-danger" *ngIf="!this.formData.get('confirmPassword')?.valid && this.formData.get('confirmPassword')?.touched">
-                                     {{messageVlidate.confirmPassword.require}}
+                                     {{messageVlidate.confirmPassword.required}}
                                     </div>
                             </div>
                             <!-- Login Button -->

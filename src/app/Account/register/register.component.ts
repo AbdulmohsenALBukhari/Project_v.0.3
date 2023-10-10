@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { FormGroup,FormBuilder, Validators } from '@angular/forms';
 import { RegisterModel } from 'src/app/model/AccountModels';
+import { usernameValidator } from 'src/app/model/custom-valid';
 import { AccountServicesService } from 'src/app/services/AccountServices.service';
 
 @Component({
@@ -16,20 +17,20 @@ export class RegisterComponent implements OnInit {
 
   messageVlidate = {
     userName : {
-      require : 'require',
+      required : 'required',
       minLength : 'minLength 3'
     },
     Email : {
-      require : 'require',
+      required : 'required',
       notValid : 'email is incorrect'
     },
     PasswordHash : {
-      require : 'require',
-      minLength : '8',
+      required : 'required',
+      minLength : '6',
     },
     confirmPassword : {
-      require : 'require',
-      minLength : '8',
+      required : 'required',
+      minLength : '6',
     }
   }
 
@@ -42,10 +43,10 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     
     this.formData = this.formBuilder.group({
-      UserName:['',Validators.required],
-      Email:['',Validators.required],
-      PasswordHash:['',[Validators.required,Validators.minLength(8)]],
-      confirmPassword:['',[Validators.required,Validators.minLength(8)]],
+      UserName:[null, [Validators.required,Validators.minLength(3)]],
+      Email:[null,[Validators.required,Validators.email]],
+      PasswordHash:[null,[Validators.required,Validators.minLength(6)]],
+      confirmPassword:[null,[Validators.required,Validators.minLength(6)]],
     });
 
     this.reg = {
@@ -55,6 +56,9 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  get UserName(){
+    return this.formData.get('UserName');
+  }
 
   validateRegisterModel(){
     this.reg.UserName = this.formData.value.UserName!;
