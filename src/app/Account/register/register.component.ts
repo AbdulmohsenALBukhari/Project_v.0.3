@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { FormGroup,FormBuilder, Validators } from '@angular/forms';
 import { RegisterModel } from 'src/app/model/AccountModels';
-import { usernameValidator } from 'src/app/model/custom-valid';
+import { emailValidator, userNameValidator } from 'src/app/model/custom-valid';
 import { AccountServicesService } from 'src/app/services/AccountServices.service';
 
 @Component({
@@ -18,11 +18,14 @@ export class RegisterComponent implements OnInit {
   messageVlidate = {
     userName : {
       required : 'required',
-      minLength : 'minLength 3'
+      minLength : 'minLength 3',
+      invalidUserName : 'user name It contains @#$%^',
+      maxLength : 'user name is to long maxLength is 20'
     },
     Email : {
       required : 'required',
-      notValid : 'email is incorrect'
+      notValid : 'email is incorrect',
+      invalidEmail : 'invalid Email'
     },
     PasswordHash : {
       required : 'required',
@@ -43,8 +46,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     
     this.formData = this.formBuilder.group({
-      UserName:[null, [Validators.required,Validators.minLength(3)]],
-      Email:[null,[Validators.required,Validators.email]],
+      UserName:[null, [Validators.required,userNameValidator(),Validators.minLength(3),Validators.maxLength(20)]],
+      Email:[null,[Validators.required,Validators.email,emailValidator()]],
       PasswordHash:[null,[Validators.required,Validators.minLength(6)]],
       confirmPassword:[null,[Validators.required,Validators.minLength(6)]],
     });
@@ -54,10 +57,6 @@ export class RegisterComponent implements OnInit {
       Email:'',
       PasswordHash:''
     }
-  }
-
-  get UserName(){
-    return this.formData.get('UserName');
   }
 
   validateRegisterModel(){
