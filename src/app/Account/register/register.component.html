@@ -57,8 +57,7 @@
                              <div class="form-floating mb-3">
                                 <input type="Email" id="Email" class="form-control" placeholder=""  formControlName="Email" 
                                 [ngClass]="{'is-invalid':
-                                    !this.formData.get('Email')?.valid && this.formData.get('Email')?.touched 
-                                }">
+                                    !this.formData.get('Email')?.valid && this.formData.get('Email')?.touched }">
                                 <label for="Email">Email</label>
                                 <div *ngIf="!this.formData.get('Email')?.valid && this.formData.get('Email')?.touched">
 
@@ -83,12 +82,26 @@
                             <div class="form-floating mb-3">
                                 <input type="password" id="PasswordHash" class="form-control" placeholder=""  formControlName="PasswordHash" 
                                 [ngClass]="{'is-invalid':
-                                    !this.formData.get('PasswordHash')?.valid && this.formData.get('PasswordHash')?.touched 
-                                }">
+                                    !this.formData.get('PasswordHash')?.valid && this.formData.get('PasswordHash')?.touched }">
                                 <label for="password">Password</label>
                                 <div class="text-danger" 
                                 *ngIf="!this.formData.get('PasswordHash')?.valid && this.formData.get('PasswordHash')?.touched">
-                                 {{messageVlidate.PasswordHash.required}}
+
+                                    <div class="text-danger"
+                                    *ngIf="this.formData.get('PasswordHash')?.hasError('required')">
+                                    {{messageVlidate.PasswordHash.required}}
+                                    </div>
+
+                                    <div class="text-danger"
+                                    *ngIf="!this.formData.get('PasswordHash')?.hasError('minLength')">
+                                    {{messageVlidate.PasswordHash.minLength}}
+                                    </div>
+
+                                    <div class="text-danger"
+                                    *ngIf="!this.formData.get('PasswordHash')?.hasError('passwordPatternValidator')">
+                                    {{messageVlidate.PasswordHash.PasswordValidator}}
+                                    </div>
+
                                 </div>
                             </div>
                             <!-- confirm Password -->
