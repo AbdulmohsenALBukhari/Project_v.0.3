@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { FormGroup,FormBuilder, Validators } from '@angular/forms';
 import { RegisterModel } from 'src/app/model/AccountModels';
-import { PasswordValidator, emailValidator, passwordPatternValidator, userNameValidator } from 'src/app/model/custom-valid';
+import { userNameValidator } from 'src/app/model/custom-valid';
 import { AccountServicesService } from 'src/app/services/AccountServices.service';
 
 @Component({
@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
     
     this.formData = this.formBuilder.group({
       UserName:[null, [Validators.required,userNameValidator(),Validators.minLength(3),Validators.maxLength(20)]],
-      Email:[null,[Validators.required,Validators.email,emailValidator()]],
+      Email:[null,[Validators.required,Validators.email]],
       PasswordHash:[null,[Validators.required,Validators.minLength(8)]],
       confirmPassword:[null,[Validators.required,Validators.minLength(8)]],
     });

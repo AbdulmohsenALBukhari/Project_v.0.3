@@ -24,35 +24,20 @@
                     <div class="card-body ">
                         <form [formGroup]="formData" (ngSubmit)="onSubmit()">
                             <!-- User Name -->
-                            <div class="form-floating mb-3" >
-                                <input type="text" id="UserName" class="form-control" placeholder=""  formControlName="UserName"
-                                [ngClass]="{'is-invalid':
-                                    !this.formData.get('UserName')?.valid && this.formData.get('UserName')?.touched }">
+                            <mat-form-field appearance="outline">
                                 <label for="UserName">User Name</label>
-                                <div *ngIf="!this.formData.get('UserName')?.valid && this.formData.get('UserName')?.touched">
+                                <input type="text" id="UserName" matInput class="form-control" placeholder="Ex.pat@example.com"  formControlName="UserName">
+                                    
+                                <mat-error class="text-danger" *ngIf="this.formData.get('UserName')?.hasError('required')">
+                                        {{messageVlidate.userName.required}}
+                                    </mat-error>
+                                        <mat-error>
+                                                
+                                        </mat-error>
+                                            <mat-error>
 
-                                    <div class="text-danger" 
-                                    *ngIf="this.formData.get('UserName')?.hasError('required')">
-                                    {{messageVlidate.userName.required}}
-                                    </div>
-
-                                    <div class="text-danger" 
-                                    *ngIf="!this.formData.get('UserName')?.hasError('minLength')">
-                                    {{messageVlidate.userName.minLength}}
-                                    </div>
-
-                                    <div class="text-danger" 
-                                    *ngIf="!this.formData.get('UserName')?.hasError('maxLength')">
-                                    {{messageVlidate.userName.maxLength}}
-                                    </div>
-
-                                    <div class="text-danger" 
-                                    *ngIf="!this.formData.get('UserName')?.hasError('userNameValidator')">
-                                    {{messageVlidate.userName.invalidUserName}}
-                                    </div>
-
-                                </div>
-                            </div>
+                                            </mat-error>
+                            </mat-form-field>
                              <!-- Email -->
                              <div class="form-floating mb-3">
                                 <input type="Email" id="Email" class="form-control" placeholder=""  formControlName="Email" 
