@@ -1,9 +1,18 @@
-  input[type=text] {
-    border: 2px solid red;
-    border-radius: 4px;
+.example-full-width {
+  width: 90%;
+  height: 65px;
+  font-size: 18px;
 
-  }
+}
 
-  mat-form-field{ 
-    width: 100%;
-  }
+.label-mat{
+  color: darkblue;
+  font-size: 15px;
+}
+
+.deg{
+  color: red;
+  font-size: 15px;
+  padding-right: 100px;
+}
+

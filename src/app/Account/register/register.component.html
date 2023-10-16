@@ -21,18 +21,18 @@
                         <label>Register</label>
                         <a style="float: right; text-decoration: underline; font-size: 18px; color: white;" routerLink="">login</a>
                     </div>
-                    <div class="card-body ">
+                    <div class="card-body">
                         <form [formGroup]="formData" (ngSubmit)="onSubmit()">
                             <!-- User Name -->
-                            <mat-form-field appearance="outline">
-                                <label for="UserName">User Name</label>
-                                <input type="text" id="UserName" matInput class="form-control" placeholder="Ex.pat@example.com"  formControlName="UserName">
+                            <mat-form-field appearance="outline" class="example-full-width">
+                                <mat-label class="label-mat">User Name</mat-label>
+                                <input type="text" id="UserName" matInput placeholder="Ex.pat@example.com" formControlName="UserName">
                                     
                                 <mat-error class="text-danger" *ngIf="this.formData.get('UserName')?.hasError('required')">
                                         {{messageVlidate.userName.required}}
                                     </mat-error>
-                                        <mat-error>
-                                                
+                                        <mat-error class="deg" *ngIf="!this.formData.get('UserName')?.hasError('minLength')">
+                                            {{messageVlidate.userName.minLength}}
                                         </mat-error>
                                             <mat-error>
 
