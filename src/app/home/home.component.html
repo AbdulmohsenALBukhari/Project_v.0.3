@@ -44,7 +44,7 @@
                             </div>
                             <!-- Login Button -->
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-success"> <i class="fa fa-sign-in" aria-hidden="true"></i> Login as admin</button>
+                                <button type="submit" class="btn btn-success" [disabled]="!formData.valid"> <i class="fa fa-sign-in" aria-hidden="true"></i> Login as admin</button>
                             </div>
                         </form>
                     </div>

@@ -21,23 +21,38 @@
                         <label>Register</label>
                         <a style="float: right; text-decoration: underline; font-size: 18px; color: white;" routerLink="">login</a>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body ">
                         <form [formGroup]="formData" (ngSubmit)="onSubmit()">
                             <!-- User Name -->
-                            <mat-form-field appearance="outline" class="example-full-width">
-                                <mat-label class="label-mat">User Name</mat-label>
-                                <input type="text" id="UserName" matInput placeholder="Ex.pat@example.com" formControlName="UserName">
-                                    
-                                <mat-error class="text-danger" *ngIf="this.formData.get('UserName')?.hasError('required')">
-                                        {{messageVlidate.userName.required}}
-                                    </mat-error>
-                                        <mat-error class="deg" *ngIf="!this.formData.get('UserName')?.hasError('minLength')">
-                                            {{messageVlidate.userName.minLength}}
-                                        </mat-error>
-                                            <mat-error>
+                            <div class="form-floating mb-3" >
+                                <input type="text" id="UserName" class="form-control" placeholder="" required minlength="3" formControlName="UserName" formControlName="UserName"
+                                [ngClass]="{'is-invalid':
+                                    !this.formData.get('UserName')?.valid && this.formData.get('UserName')?.touched }">
+                                <label for="UserName">User Name</label>
+                                <div *ngIf="!this.formData.get('UserName')?.valid && this.formData.get('UserName')?.touched" class="error">
 
-                                            </mat-error>
-                            </mat-form-field>
+                                    <div class="text-danger" 
+                                    *ngIf="this.formData.get('UserName')?.errors?.['required']">
+                                    {{messageVlidate.userName.required}}
+                                    </div>
+
+                                    <div class="text-danger" 
+                                    *ngIf="!this.formData.get('UserName')?.errors?.['minLength'] && !this.formData.get('UserName')?.errors?.['required']">
+                                    {{messageVlidate.userName.minLength}}
+                                    </div>
+
+                                    <div class="text-danger" 
+                                    *ngIf="!this.formData.get('UserName')?.errors?.['maxLength'] && !this.formData.get('UserName')?.errors?.['required']">
+                                    {{messageVlidate.userName.maxLength}}
+                                    </div>
+
+                                    <div class="text-danger" 
+                                    *ngIf="!this.formData.get('UserName')?.errors?.['invalidUserName'] && !this.formData.get('UserName')?.errors?.['required']">
+                                    {{messageVlidate.userName.invalidUserName}}
+                                    </div>
+
+                                </div>
+                            </div>
                              <!-- Email -->
                              <div class="form-floating mb-3">
                                 <input type="Email" id="Email" class="form-control" placeholder=""  formControlName="Email" 
@@ -47,19 +62,14 @@
                                 <div *ngIf="!this.formData.get('Email')?.valid && this.formData.get('Email')?.touched">
 
                                     <div class="text-danger"
-                                    *ngIf="this.formData.get('Email')?.hasError('required')">
+                                    *ngIf="this.formData.get('Email')?.errors?.['required']">
                                     {{messageVlidate.Email.required}}
                                     </div> 
 
                                     <div class="text-danger"
-                                    *ngIf="this.formData.get('Email')?.hasError('email')">
+                                    *ngIf="this.formData.get('Email')?.errors?.['email']">
                                     {{messageVlidate.Email.notValid}}
                                     </div> 
-
-                                    <div class="text-danger"
-                                    *ngIf="!this.formData.get('Email')?.hasError('emailValidator')">
-                                    {{messageVlidate.Email.invalidEmail}}
-                                    </div>
 
                                 </div>
                             </div>
@@ -78,15 +88,10 @@
                                     </div>
 
                                     <div class="text-danger"
-                                    *ngIf="!this.formData.get('PasswordHash')?.hasError('minLength')">
+                                    *ngIf="!this.formData.get('PasswordHash')?.hasError('minLength') && !this.formData.get('PasswordHash')?.hasError('required')">
                                     {{messageVlidate.PasswordHash.minLength}}
                                     </div>
-
-                                    <div class="text-danger"
-                                    *ngIf="!this.formData.get('PasswordHash')?.hasError('passwordPatternValidator')">
-                                    {{messageVlidate.PasswordHash.PasswordValidator}}
-                                    </div>
-
+                                    
                                 </div>
                             </div>
                             <!-- confirm Password -->
@@ -97,8 +102,13 @@
                                 }">
                                 <label for="confirmPassword">Confirm Password</label>
                                 <div class="text-danger" *ngIf="!this.formData.get('confirmPassword')?.valid && this.formData.get('confirmPassword')?.touched">
-                                     {{messageVlidate.confirmPassword.required}}
-                                    </div>
+                                   
+                                    <div class="text-danger"
+                                    *ngIf="this.formData.get('confirmPassword')?.hasError('required')">
+                                    {{messageVlidate.PasswordHash.required}}
+                                    </div>   
+
+                                </div>
                             </div>
                             <!-- Login Button -->
                             <div class="d-grid">

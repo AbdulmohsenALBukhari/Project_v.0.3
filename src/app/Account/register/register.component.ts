@@ -30,7 +30,6 @@ export class RegisterComponent implements OnInit {
     PasswordHash : {
       required : 'required',
       minLength : 'minLength 8',
-      PasswordValidator : 'Password Validator'
     },
     confirmPassword : {
       required : 'required',
@@ -50,7 +49,7 @@ export class RegisterComponent implements OnInit {
       UserName:[null, [Validators.required,userNameValidator(),Validators.minLength(3),Validators.maxLength(20)]],
       Email:[null,[Validators.required,Validators.email]],
       PasswordHash:[null,[Validators.required,Validators.minLength(8)]],
-      confirmPassword:[null,[Validators.required,Validators.minLength(8)]],
+      confirmPassword:[null,[Validators.required]],
     });
 
     this.reg = {

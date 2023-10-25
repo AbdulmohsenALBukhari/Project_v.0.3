@@ -47,8 +47,19 @@ export class HomeComponent implements OnInit{
       this.validateRegisterModel();
       this.service.Login(this.log).subscribe(succ =>{
         console.log(succ);
-        this.router.navigate(['upload']);
+        const Remember = !!this.formData.value.RememberMe!;
+        const day = new Date();
+        if(Remember){
+          day.setDate(day.getDate() + 15);
+        }else{
+          day.setMinutes(day.getMinutes() + 35);
+        }
+        localStorage.setItem('userKey',this.formData.value.UserName!);
+        localStorage.setItem('expire',day.toString());
+        this.router.navigate(['forgotPassword']);
       });
+    }else{
+      console.log(this.log);
     }
   }
 

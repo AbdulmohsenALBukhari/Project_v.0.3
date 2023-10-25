@@ -1,12 +1,12 @@
 // custom-validators.ts
-import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { AbstractControl, FormGroup, ValidatorFn } from '@angular/forms';
 
 
 export function userNameValidator():ValidatorFn {
   return (control: AbstractControl): { [key: string]: boolean } | null => {
       const emailPattern = /^[a-zA-Z0-9_]+$/;
-      if (control.value && !emailPattern.test(control.value)) {
-        return { 'invalidUserName': true };
+      if (control.value && !emailPattern.test (control.value)) {
+        return { 'invalidUserName': false };
   }
     return null;
   };
@@ -32,3 +32,4 @@ export function passwordPatternValidator(control: AbstractControl): { [key: stri
 
   return null;
 }
+

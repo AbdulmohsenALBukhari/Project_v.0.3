@@ -22,4 +22,8 @@ export class AccountServicesService {
   Login(log : LoginModel):Observable<LoginModel>{
     return this.http.post<LoginModel>(this.baseUrl + 'Login', log ,{'headers':this.headers}).pipe();
   }
+
+  Logout(){
+    return this.http.get(this.baseUrl+'Logout').pipe();
+  }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AccountServicesService } from 'src/app/services/AccountServices.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class ForgotPasswordComponent {
 
+  constructor(
+    private service : AccountServicesService
+  ){}
+
+  onSubmit(){
+    this.service.Logout().subscribe(succ => {
+      console.log('succ')
+    },err=> console.log(err));
+  }
 }
