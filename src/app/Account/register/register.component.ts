@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
 
   formData! : FormGroup;
   reg : RegisterModel;
-  submitted = false;
+  message:string;
 
   messageVlidate = {
     userName : {
@@ -45,6 +45,7 @@ export class RegisterComponent implements OnInit {
   //index page call first time
   ngOnInit(): void {
     
+    this.message = '';
     this.formData = this.formBuilder.group({
       UserName:[null, [Validators.required,userNameValidator(),Validators.minLength(3),Validators.maxLength(20)]],
       Email:[null,[Validators.required,Validators.email]],
@@ -66,18 +67,16 @@ export class RegisterComponent implements OnInit {
   }
   
   onSubmit(){
-    console.log(this.formData);
 
-    this.submitted = true;
-
-    if(this.formData.valid)
+    if(this.formData.valid){
       this.validateRegisterModel();
       this.service.Register(this.reg).subscribe(succes =>{
-       setTimeout(() => {
-        console.log('succes')
-        this.formData.reset();
-       }, 3500);
-      },error => console.log(error)); 
+        console.log("succes")
+        this.message = 'Register success and check email';
+    });
+  }else{
+    console.log(this.reg);
+  }
   }
 
 }

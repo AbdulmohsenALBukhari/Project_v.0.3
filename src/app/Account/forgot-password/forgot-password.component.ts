@@ -15,6 +15,7 @@ export class ForgotPasswordComponent {
   onSubmit(){
     this.service.Logout().subscribe(succ => {
       console.log('succ')
+      alert('logout succes');
     },err=> console.log(err));
   }
 }

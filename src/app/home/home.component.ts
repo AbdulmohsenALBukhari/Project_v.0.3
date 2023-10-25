@@ -13,6 +13,11 @@ export class HomeComponent implements OnInit{
 
   formData : FormGroup;
   log : LoginModel;
+  messageL:string;
+
+  messageVlidate ={
+
+  }
 
   constructor(
     private formBuilder : FormBuilder,
@@ -21,6 +26,8 @@ export class HomeComponent implements OnInit{
     ){}
 
   ngOnInit(): void {
+    
+    this.messageL = '';
     this.formData = this.formBuilder.group({
       UserName:['',Validators.required],
       PasswordHash:['',Validators.required],
@@ -56,8 +63,8 @@ export class HomeComponent implements OnInit{
         }
         localStorage.setItem('userKey',this.formData.value.UserName!);
         localStorage.setItem('expire',day.toString());
-        this.router.navigate(['forgotPassword']);
-      });
+        this.messageL = 'Login succes';
+        });
     }else{
       console.log(this.log);
     }
