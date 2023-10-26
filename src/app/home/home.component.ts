@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit{
     }
   }
 
-  validateRegisterModel(){
+  validateLoginModel(){
     this.log.UserName = this.formData.value.UserName!;
     this.log.PasswordHash = this.formData.value.PasswordHash!;
     this.log.RememberMe = this.formData.value.RememberMe!;
@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit{
     console.log(this.formData);
 
     if (this.formData.valid) {
-      this.validateRegisterModel();
+      this.validateLoginModel();
       this.service.Login(this.log).subscribe(succ =>{
         console.log(succ);
         const Remember = !!this.formData.value.RememberMe!;

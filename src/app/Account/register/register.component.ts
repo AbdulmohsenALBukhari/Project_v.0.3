@@ -67,16 +67,15 @@ export class RegisterComponent implements OnInit {
   }
   
   onSubmit(){
-
     if(this.formData.valid){
       this.validateRegisterModel();
-      this.service.Register(this.reg).subscribe(succes =>{
-        console.log("succes")
-        this.message = 'Register success and check email';
-    });
-  }else{
-    console.log(this.reg);
-  }
+      this.service.Register(this.reg).subscribe(succ=>{
+        console.log('succer')
+      this.message = 'Register success and check email';
+      });
+    }else{
+      this.message = 'not success';
+    }
   }
 
 }
