@@ -37,6 +37,13 @@
                             <div class="form-floating mb-3">
                                 <input type="text" id="UserName" class="form-control" placeholder="" autofocus="" formControlName="UserName">
                                 <label for="UserName">Username</label>
+                                <div *ngIf="!this.formData.get('UserNaem')?.valid && this.formData.get('UserNaem')?.touched">
+
+                                    <div class="text-danger">
+                                        *ngIf="this.formData.get('UserName')?.errors?.['required']">
+                                        {{messageVlidate.userName.required}}
+                                    </div>
+                                </div>
                             </div>
                             <!-- Password -->
                             <div class="form-floating mb-3">

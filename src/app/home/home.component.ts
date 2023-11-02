@@ -16,7 +16,12 @@ export class HomeComponent implements OnInit{
   messageL:string;
 
   messageVlidate ={
-
+    userName : {
+      required : 'required'
+    },
+    PasswordHash : {
+      required : 'required',
+    }
   }
 
   constructor(
