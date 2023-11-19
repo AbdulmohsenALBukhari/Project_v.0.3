@@ -26,4 +26,10 @@ export class AccountServicesService {
   Logout(){
     return this.http.get(this.baseUrl+'Logout').pipe();
   }
+
+  GetRoleName(userName : string){
+    return this.http.get(this.baseUrl + 'GetRoleName/' + userName, {responseType: 'text'}).pipe();
+  }
+
+  
 }

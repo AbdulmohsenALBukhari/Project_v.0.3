@@ -52,6 +52,8 @@ export class HomeComponent implements OnInit{
     this.log.RememberMe = this.formData.value.RememberMe!;
   }
 
+
+
   onSubmit(){
     console.log(this.formData);
 
@@ -68,7 +70,12 @@ export class HomeComponent implements OnInit{
         }
         localStorage.setItem('userKey',this.formData.value.UserName!);
         localStorage.setItem('expire',day.toString());
+        this.service.GetRoleName(this.formData.value.UserName).subscribe(succ =>{
+          localStorage.setItem('role',succ.toString());
+        });
+        
         this.messageL = 'Login succes';
+        this.router.navigate(['forgotPassword']);
         });
     }else{
       console.log(this.log);
