@@ -26,7 +26,9 @@ export class ForgotPasswordComponent {
 
   isUserRegister(){
     const user = !!localStorage.getItem('userKey');
-    if(user){
+    const exp = !!localStorage.getItem('expire');
+    const role = !!localStorage.getItem('role');
+    if(user && exp && role){
       return true;
     }
     return false;
