@@ -24,6 +24,16 @@ export class AccountServicesService {
     return encrpted.toString();
   }
 
-  
+  Decrypt(value: string): string{
+    const key = CryptoJS.enc.Utf8.parse(this.secretKey);
+    const iv = CryptoJS.enc.Utf8.parse(this.secretKey);
+    const decrypted = CryptoJS.AES.decrypt(value, key,{
+      keySize : 128 /8,
+      iv,
+      mode : CryptoJS.mode.CBC,
+      padding : CryptoJS.pad.Pkcs7
+    });
+    return decrypted.toString(CryptoJS.enc.Utf8);
+  }
 
 }
