@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginModel } from '../model/AccountModels';
 import { AccountServicesService } from '../services/AccountServices.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -27,7 +28,8 @@ export class HomeComponent implements OnInit{
   constructor(
     private formBuilder : FormBuilder,
     private service : AccountServicesService,
-    private router : Router
+    private router : Router,
+    private auth: AuthService
     ){}
 
   ngOnInit(): void {
@@ -56,29 +58,19 @@ export class HomeComponent implements OnInit{
 
   onSubmit(){
     console.log(this.formData);
-
     if (this.formData.valid) {
       this.validateLoginModel();
       this.service.Login(this.log).subscribe(succ =>{
         console.log(succ);
         const Remember = !!this.formData.value.RememberMe!;
-        const day = new Date();
-        if(Remember){
-          day.setDate(day.getDate() + 15);
-        }else{
-          day.setMinutes(day.getMinutes() + 35);
-        }
-        localStorage.setItem('userKey',this.formData.value.UserName!);
-        localStorage.setItem('expire',day.toString());
-        this.service.GetRoleName(this.formData.value.UserName).subscribe(succ =>{
-          localStorage.setItem('role',succ.toString());
-        });
-        
+        const userName = this.formData.value.UserName!;
+        this.auth.installStorage(Remember,userName);
         this.messageL = 'Login succes';
         this.router.navigate(['forgotPassword']);
         });
     }else{
       console.log(this.log);
+      this.messageL = 'not succes';
     }
   }
 

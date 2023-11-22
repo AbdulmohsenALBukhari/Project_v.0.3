@@ -5,7 +5,7 @@ import * as CryptoJS from 'crypto-js';
 @Injectable({
   providedIn: 'root'
 })
-export class AccountServicesService {
+export class cryptService {
 
   constructor() { }
 
