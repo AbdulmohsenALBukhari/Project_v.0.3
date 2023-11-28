@@ -32,5 +32,25 @@ export class AuthService {
           localStorage.setItem('role',this.cryp.Encrpt(succ.toString()));
         });
   }
+  
+  ValidateUser(userName : string, role : string){
+    return this.http.get(this.baseUrl + 'CheckUserClim/' + 'lsx' + '&' + 'User').pipe();
+  }
+
+  CheckStorage(){
+    if(!!localStorage.getItem('userKey') && !!localStorage.getItem('expire') && !!localStorage.getItem('role')){
+    
+    const userNameDecrypt =  this.cryp.Decrypt(localStorage.getItem('userKey') || '{}');
+    const expireDecrypt = this.cryp.Decrypt(localStorage.getItem('expire') || '{}');
+    const roleDecrypt = this.cryp.Decrypt(localStorage.getItem('role') || '{}');
+
+    if(userNameDecrypt != null && expireDecrypt != null && roleDecrypt != null){
+      this.ValidateUser(userNameDecrypt,roleDecrypt).subscribe(succ => {
+        console.log('user is Authentication')
+      },err => console.log(err));
+      console.log('userName =' + userNameDecrypt + ' ' + 'expire =' + expireDecrypt + ' ' + 'role =' + roleDecrypt);
+    }
+  }
+  }
 
 }

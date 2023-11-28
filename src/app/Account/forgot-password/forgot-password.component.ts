@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountServicesService } from 'src/app/services/AccountServices.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -11,8 +12,14 @@ export class ForgotPasswordComponent {
 
   constructor(
     private service : AccountServicesService,
-    private router : Router
+    private router : Router,
+    private auth: AuthService
   ){}
+
+  ngOnInit(): void{
+    this.auth.CheckStorage();
+
+  }
 
   Logout(){
     this.service.Logout().subscribe(succ => {
@@ -21,7 +28,7 @@ export class ForgotPasswordComponent {
       localStorage.removeItem('expire');
       localStorage.removeItem('role');
      this.router.navigate(['home']);
-    },err=> console.log(err));
+    });
   }
 
   isUserRegister(){

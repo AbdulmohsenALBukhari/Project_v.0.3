@@ -13,14 +13,21 @@ export class AccountServicesService {
 
   baseUrl = 'http://localhost:5013/api/Account/';
 
-  headers = new HttpHeaders().set('content-type','application/json');
+  headersl = new HttpHeaders({'content-type':'application/json','withCredentials': 'true'});
+
+  headers = {
+    headers:new HttpHeaders({
+      'content-type':'application/json'
+    }),
+    'withCredentials' : true,
+  };
 
   Register(reg : RegisterModel):Observable<RegisterModel>{
-    return this.http.post<RegisterModel>(this.baseUrl + 'Register',reg,{'headers':this.headers}).pipe();
+    return this.http.post<RegisterModel>(this.baseUrl + 'Register',reg,this.headers).pipe();
   }
 
   Login(log : LoginModel):Observable<LoginModel>{
-    return this.http.post<LoginModel>(this.baseUrl + 'Login', log ,{'headers':this.headers}).pipe();
+    return this.http.post<LoginModel>(this.baseUrl + 'Login', log ,this.headers).pipe();
   }
 
   Logout(){

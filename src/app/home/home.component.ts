@@ -33,12 +33,13 @@ export class HomeComponent implements OnInit{
     ){}
 
   ngOnInit(): void {
-    
+
     this.messageL = '';
     this.formData = this.formBuilder.group({
       UserName:['',Validators.required],
       PasswordHash:['',Validators.required],
       RememberMe:[false,Validators.required]
+      
     });
 
     this.log ={
@@ -61,7 +62,6 @@ export class HomeComponent implements OnInit{
     if (this.formData.valid) {
       this.validateLoginModel();
       this.service.Login(this.log).subscribe(succ =>{
-        console.log(succ);
         const Remember = !!this.formData.value.RememberMe!;
         const userName = this.formData.value.UserName!;
         this.auth.installStorage(Remember,userName);
@@ -69,7 +69,6 @@ export class HomeComponent implements OnInit{
         this.router.navigate(['forgotPassword']);
         });
     }else{
-      console.log(this.log);
       this.messageL = 'not succes';
     }
   }
