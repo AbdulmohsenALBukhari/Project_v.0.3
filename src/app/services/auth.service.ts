@@ -33,8 +33,8 @@ export class AuthService {
         });
   }
   
-  ValidateUser(userName : string, role : string){
-    return this.http.get(this.baseUrl + 'CheckUserClim/' + 'lsx' + '&' + 'User').pipe();
+  public ValidateUser(userName : string, role : string){
+    return this.http.get(this.baseUrl + 'CheckUserClim/' + userName + '&' + role,{ withCredentials : true}).pipe();
   }
 
   CheckStorage(){
@@ -47,7 +47,7 @@ export class AuthService {
     if(userNameDecrypt != null && expireDecrypt != null && roleDecrypt != null){
       this.ValidateUser(userNameDecrypt,roleDecrypt).subscribe(succ => {
         console.log('user is Authentication')
-      },err => console.log(err));
+      });
       console.log('userName =' + userNameDecrypt + ' ' + 'expire =' + expireDecrypt + ' ' + 'role =' + roleDecrypt);
     }
   }

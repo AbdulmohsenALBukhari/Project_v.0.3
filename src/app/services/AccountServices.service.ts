@@ -13,13 +13,12 @@ export class AccountServicesService {
 
   baseUrl = 'http://localhost:5013/api/Account/';
 
-  headersl = new HttpHeaders({'content-type':'application/json','withCredentials': 'true'});
+//  headersl = new HttpHeaders({'content-type':'application/json','withCredentials': 'true'});
 
   headers = {
     headers:new HttpHeaders({
       'content-type':'application/json'
     }),
-    'withCredentials' : true,
   };
 
   Register(reg : RegisterModel):Observable<RegisterModel>{

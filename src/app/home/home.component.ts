@@ -34,6 +34,8 @@ export class HomeComponent implements OnInit{
 
   ngOnInit(): void {
 
+    this.auth.CheckStorage();
+
     this.messageL = '';
     this.formData = this.formBuilder.group({
       UserName:['',Validators.required],
