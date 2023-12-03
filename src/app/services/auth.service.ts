@@ -53,4 +53,15 @@ export class AuthService {
   }
   }
 
+  IsExpiredDate(day : string){
+    const dateNow = new Date();
+    const dateExpire = new Date(Date.parse(day));
+
+    if (dateExpire < dateNow) {
+      localStorage.clear();
+      return true;
+    }
+    return false;
+  }
+
 }
