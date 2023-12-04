@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": ["crypto-js"],
             "outputPath": "dist/project-v.0.3",
             "index": "src/index.html",
             "main": "src/main.ts",
