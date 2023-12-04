@@ -17,7 +17,9 @@ export class ForgotPasswordComponent {
   ){}
 
   ngOnInit(): void{
-    this.auth.CheckStorage();
+    if (!this.auth.CheckStorage()) {
+      localStorage.clear();
+    }
 
   }
 
