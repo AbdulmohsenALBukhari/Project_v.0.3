@@ -17,20 +17,26 @@ export class ForgotPasswordComponent {
   ){}
 
   ngOnInit(): void{
-    if (!!this.auth.CheckStorage()) {
-      localStorage.clear();
-      this.Logout();
-      console.log('reslut is : => '+ this.auth.CheckStorage());
+
+    const userKey = localStorage.getItem('userKey');
+    const expire = localStorage.getItem('expire');
+    const role = localStorage.getItem('role');
+    if(userKey != null && expire != null && role != null){
+      if(!this.auth.CheckStorage()){
+        this.Logout();
+      }
     }
   }
 
   Logout(){
     this.service.Logout().subscribe(succ => {
       console.log(succ);
+      localStorage.clear();
       localStorage.removeItem('userKey');
       localStorage.removeItem('expire');
       localStorage.removeItem('role');
-     this.router.navigate(['home']);
+      console.log('user is not Authentication');
+    // this.router.navigate(['']);
     });
   }
 

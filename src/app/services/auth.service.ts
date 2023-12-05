@@ -38,23 +38,21 @@ export class AuthService {
   }
 
   CheckStorage(){
-    if(!!localStorage.getItem('userKey') && localStorage.getItem('expire') && localStorage.getItem('role')){
-    
+   
     const userNameDecrypt =  this.cryp.Decrypt(localStorage.getItem('userKey') || '{}');
     const expireDecrypt = this.cryp.Decrypt(localStorage.getItem('expire') || '{}');
     const roleDecrypt = this.cryp.Decrypt(localStorage.getItem('role') || '{}');
 
     if(userNameDecrypt != null && expireDecrypt != null && roleDecrypt != null){
       this.ValidateUser(userNameDecrypt,roleDecrypt).subscribe(succ => {
-        if (!this.IsExpiredDate) {
+        if (!!this.IsExpiredDate) {
           console.log('user is Authentication');
           return true;
         }
-        return false;
+        return true;
       });
-      console.log('userName =' + userNameDecrypt + ' ' + 'expire =' + expireDecrypt + ' ' + 'role =' + roleDecrypt);
+      //console.log('userName =' + userNameDecrypt + ' ' + 'expire =' + expireDecrypt + ' ' + 'role =' + roleDecrypt);
     }
-  }
   return false;
   }
 
