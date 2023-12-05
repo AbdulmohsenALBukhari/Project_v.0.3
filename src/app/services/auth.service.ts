@@ -38,7 +38,7 @@ export class AuthService {
   }
 
   CheckStorage(){
-    if(!!localStorage.getItem('userKey') && !!localStorage.getItem('expire') && !!localStorage.getItem('role')){
+    if(!!localStorage.getItem('userKey') && localStorage.getItem('expire') && localStorage.getItem('role')){
     
     const userNameDecrypt =  this.cryp.Decrypt(localStorage.getItem('userKey') || '{}');
     const expireDecrypt = this.cryp.Decrypt(localStorage.getItem('expire') || '{}');

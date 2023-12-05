@@ -31,7 +31,7 @@ export class AccountServicesService {
   }
 
   Logout(){
-    return this.http.get(this.baseUrl+'Logout').pipe();
+    return this.http.get(this.baseUrl+'Logout',{withCredentials : true}).pipe();
   }
 
   

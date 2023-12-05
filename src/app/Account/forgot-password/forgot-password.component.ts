@@ -17,10 +17,11 @@ export class ForgotPasswordComponent {
   ){}
 
   ngOnInit(): void{
-    if (!this.auth.CheckStorage()) {
+    if (!!this.auth.CheckStorage()) {
       localStorage.clear();
+      this.Logout();
+      console.log('reslut is : => '+ this.auth.CheckStorage());
     }
-
   }
 
   Logout(){
