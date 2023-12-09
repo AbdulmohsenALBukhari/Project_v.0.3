@@ -22,9 +22,12 @@ export class ForgotPasswordComponent {
     const expire = localStorage.getItem('expire');
     const role = localStorage.getItem('role');
     if(userKey != null && expire != null && role != null){
-      if(!this.auth.CheckStorage()){
+      if(!!this.auth.CheckStorage()){
         this.Logout();
       }
+    }
+    if (userKey == null) {
+      console.log('user is not Authentication');
     }
   }
 

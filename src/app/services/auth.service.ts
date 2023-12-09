@@ -45,11 +45,11 @@ export class AuthService {
 
     if(userNameDecrypt != null && expireDecrypt != null && roleDecrypt != null){
       this.ValidateUser(userNameDecrypt,roleDecrypt).subscribe(succ => {
-        if (!!this.IsExpiredDate) {
+        if (!this.IsExpiredDate(expireDecrypt)) {
           console.log('user is Authentication');
           return true;
         }
-        return true;
+        return false;
       });
       //console.log('userName =' + userNameDecrypt + ' ' + 'expire =' + expireDecrypt + ' ' + 'role =' + roleDecrypt);
     }
