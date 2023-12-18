@@ -70,7 +70,7 @@ export class RegisterComponent implements OnInit {
     if(this.formData.valid){
       this.validateRegisterModel();
       this.service.Register(this.reg).subscribe(succ=>{
-        console.log('succer')
+        console.log('successfully')
       this.message = 'Register success and check email';
       });
     }else{

@@ -10,6 +10,10 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class ForgotPasswordComponent {
 
+  button1:boolean;
+  message:string;
+
+
   constructor(
     private service : AccountServicesService,
     private router : Router,
@@ -39,6 +43,8 @@ export class ForgotPasswordComponent {
       localStorage.removeItem('expire');
       localStorage.removeItem('role');
       console.log('user is not Authentication');
+      this.message = 'logout successfully';
+      this.button1 = true;
     // this.router.navigate(['']);
     });
   }
