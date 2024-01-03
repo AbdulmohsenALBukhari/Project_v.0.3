@@ -9,6 +9,7 @@ import { ForgotPasswordComponent } from './Account/forgot-password/forgot-passwo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { RegisterconfirmComponent } from './Account/registerconfirm/registerconfirm.component';
 // ... import other modules as needed
 
 
@@ -18,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     RegisterComponent,
     ForgotPasswordComponent,
+    RegisterconfirmComponent,
   ],
   imports: [
     BrowserModule,

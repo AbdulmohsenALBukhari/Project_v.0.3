@@ -34,5 +34,9 @@ export class AccountServicesService {
     return this.http.get(this.baseUrl+'Logout',{withCredentials : true}).pipe();
   }
 
+  EmailConfirm(id:string, token:string){
+    return this.http.get(this.baseUrl+'RegistreationConfirm?ID='+ id + '&Token='+ token).pipe();
+
+  }
   
 }
